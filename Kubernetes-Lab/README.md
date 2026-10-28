@@ -1,6 +1,6 @@
-# 🚀 Levantar un clúster de Kubernetes de laboratorio
+# 🚀 Levantar un clúster de Kubernetes para labs
 
-Una guía de como levantar un clúster de Kubernetes en local usando minikube para poder realizarpruebas o ejercicios
+Una guía de como levantar un clúster de Kubernetes en local usando minikube para poder realizar pruebas o ejercicios
 
 ---
 
@@ -8,7 +8,7 @@ Una guía de como levantar un clúster de Kubernetes en local usando minikube pa
 1. [Requisitos Previos](#-requisitos-previos)
 2. [Paso 1: Instalación](#paso-1-instalación)
 3. [Paso 2: Configuración Inicial](#paso-2-configuración-inicial)
-4. [Preguntas Frecuentes](#-preguntas-frecuentes)
+4. [Comandos Esenciales K8s](#-comandos-esenciales)
 
 ---
 
@@ -47,16 +47,13 @@ minikube start
 
 ---
 
-## 💬 Preguntas Frecuentes
+## Comandos Esenciales K8s
+
+Adjunto un documento con comandos esenciales de K8s que son ideales para probar en nuestro clúster de pruebas de Kubernetes: [Guía Comandos Esenciales K8s](https://github.com/joan-camps-ciria/Proyectos-Laboratorio/tree/master/Kubernetes-Lab/guide.md)
 
 <details>
-<summary><b>¿Qué hago si obtengo un error de puerto ocupado?</b></summary>
-Puedes cambiar el puerto `8080` en el archivo <code>config.js</code> por cualquier otro número libre, como el `3000`.
-</details>
-
-<details>
-<summary><b>¿Este tutorial sirve para producción?</b></summary>
-No, está diseñado exclusivamente para entornos de desarrollo local.
+<summary><b>¿Qué hago si obtengo un error al iniciar minikube con docker?</b></summary>
+Probablemente tu usuario no tenga permisos para levantar contenedores con Docker, aplicar grupo al usuario con: <code>sudo usermod -aG docker $USER</code>
 </details>
 
 ---
