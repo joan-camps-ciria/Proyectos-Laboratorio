@@ -34,16 +34,22 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-a
 
 ---
 
-## Paso 2: Iniciar Minikube
+## Paso 2: Iniciar y detener Minikube
 
 Tras la instalación podemos iniciar el clúster:
 
 ```bash
 minikube start
 ```
-![Captura de pantalla del arranque](img/minikube.png)
+![Captura de pantalla del arranque](img/minikube_start.png)
 
 
+Una vez terminemos de usar el clúster lo podemos detener:
+
+```bash
+minikube stop
+```
+![Captura de pantalla del arranque](img/minikube_stop.png)
 
 ---
 
