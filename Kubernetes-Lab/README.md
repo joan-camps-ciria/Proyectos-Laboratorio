@@ -6,8 +6,8 @@ Una guía de como levantar un clúster de Kubernetes en local usando minikube pa
 
 ## 📌 Tabla de Contenidos
 1. [Requisitos Previos](#-requisitos-previos)
-2. [Paso 1: Instalación](#paso-1-instalación)
-3. [Paso 2: Configuración Inicial](#paso-2-configuración-inicial)
+2. [Paso 1: Instalación Minikube](#paso-1-instalación-minikube)
+3. [Paso 2: Iniciar Minikube](#paso-2-iniciar-minikube)
 4. [Comandos Esenciales K8s](#-comandos-esenciales)
 
 ---
@@ -50,6 +50,8 @@ minikube start
 ## Comandos Esenciales K8s
 
 Adjunto un documento con comandos esenciales de K8s que son ideales para probar en nuestro clúster de pruebas de Kubernetes: [Guía Comandos Esenciales K8s](https://github.com/joan-camps-ciria/Proyectos-Laboratorio/tree/master/Kubernetes-Lab/guide.md)
+
+---
 
 <details>
 <summary><b>¿Qué hago si obtengo un error al iniciar minikube con docker?</b></summary>
