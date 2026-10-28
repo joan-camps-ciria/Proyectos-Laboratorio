@@ -1,6 +1,6 @@
-# 🚀 Mi Súper Tutorial: Cómo configurar X en 5 minutos
+# 🚀 Levantar un clúster de Kubernetes de laboratorio
 
-Una guía paso a paso y sin rodeos para aprender a dominar X tecnología desde cero.
+Una guía de como levantar un clúster de Kubernetes en local usando minikube para poder realizarpruebas o ejercicios
 
 ---
 
@@ -15,37 +15,35 @@ Una guía paso a paso y sin rodeos para aprender a dominar X tecnología desde c
 ## 🛠 Requisitos Previos
 
 Antes de empezar, asegúrate de tener instalado:
-*   [Node.js](https://nodejs.org) (Versión 18 o superior)
-*   Un editor de código como [VS Code](https://visualstudio.com)
+*   [Docker.io](https://www.docker.com/) Necesario para levantar el clúster con minikube
 
 ---
 
-## Paso 1: Instalación
+## Paso 1: Instalación Minikube
 
-Abre tu terminal y ejecuta el siguiente comando para instalar las dependencias:
+Revisa la documentación de [Minikube](https://minikube.sigs.k8s.io/docs/)
+
+Para la instalación en Linux x86-64:
 
 ```bash
-npm install mi-paquete-especial
+curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 ```
 
-> 💡 **Nota:** Si estás en Linux o macOS, es posible que necesites usar `sudo` antes del comando si experimentas problemas de permisos.
+> 💡 **Nota:** Para otros sistemas operativos revisar la documentación.
 
 ---
 
-## Paso 2: Configuración Inicial
+## Paso 2: Iniciar Minikube
 
-Crea un archivo llamado `config.js` y añade el siguiente bloque de código. Verás cómo Git resalta la sintaxis automáticamente:
+Tras la instalación podemos iniciar el clúster:
 
-```javascript
-// Configuración del entorno
-const config = {
-    apiKey: "TU_API_KEY_AQUI",
-    modoDesarrollo: true,
-    puerto: 8080
-};
-
-export default config;
+```bash
+minikube start
 ```
+![Captura de pantalla del arranque](img/minikube.png)
+
+
 
 ---
 
@@ -63,5 +61,5 @@ No, está diseñado exclusivamente para entornos de desarrollo local.
 
 ---
 
-Hecho con ❤️ por [Joan Camps](https://github.com)
+Hecho con ❤️ por [Joan Camps](https://github.com/joan-camps-ciria)
 
