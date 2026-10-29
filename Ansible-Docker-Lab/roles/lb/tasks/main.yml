@@ -1,0 +1,23 @@
+- name: Instalar nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Quitar el sitio por defecto de nginx
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: Recargar nginx
+
+- name: Configurar el balanceo hacia los nodos web
+  ansible.builtin.template:
+    src: balanceador.conf.j2
+    dest: /etc/nginx/conf.d/balanceador.conf
+  notify: Recargar nginx
+
+- name: Arrancar nginx y activarlo al inicio
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true

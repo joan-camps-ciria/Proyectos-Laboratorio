@@ -1,0 +1,18 @@
+# Generado por Ansible: no editar a mano
+upstream web {
+    # Memoria compartida: todos los workers de nginx siguen el mismo turno de reparto
+    zone web 64k;
+{% for nodo in groups['web'] %}
+    server {{ nodo }}:80;
+{% endfor %}
+}
+
+server {
+    listen 80 default_server;
+
+    location / {
+        proxy_pass http://web;
+        # Indica en la respuesta qué nodo web la ha servido
+        add_header X-Servido-Por $upstream_addr always;
+    }
+}

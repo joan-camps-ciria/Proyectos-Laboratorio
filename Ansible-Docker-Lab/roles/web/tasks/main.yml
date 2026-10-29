@@ -1,0 +1,19 @@
+- name: Cargar las variables de la familia del sistema (Debian o RedHat)
+  ansible.builtin.include_vars: "{{ ansible_facts['os_family'] }}.yml"
+
+- name: Instalar nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Arrancar nginx y activarlo al inicio
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Publicar la página de inicio
+  ansible.builtin.copy:
+    content: "<h1>Hola desde {{ inventory_hostname }}</h1>\n<p>{{ mensaje }}</p>\n"
+    dest: "{{ raiz_web }}/index.html"

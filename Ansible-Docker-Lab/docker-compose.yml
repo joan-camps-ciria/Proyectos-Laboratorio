@@ -1,0 +1,36 @@
+name: ansible-lab
+
+# Opciones comunes a todos los nodos, para no repetirlas
+x-nodo: &nodo
+  # Necesario para que systemd funcione dentro del contenedor
+  privileged: true
+  cgroup: host
+  volumes:
+    - /sys/fs/cgroup:/sys/fs/cgroup:rw
+
+services:
+  lb1:
+    <<: *nodo
+    image: geerlingguy/docker-ubuntu2404-ansible
+    container_name: lb1
+    hostname: lb1
+    ports:
+      - "8080:80"
+
+  web1:
+    <<: *nodo
+    image: geerlingguy/docker-ubuntu2404-ansible
+    container_name: web1
+    hostname: web1
+
+  web2:
+    <<: *nodo
+    image: geerlingguy/docker-rockylinux9-ansible
+    container_name: web2
+    hostname: web2
+
+  web3:
+    <<: *nodo
+    image: geerlingguy/docker-debian12-ansible
+    container_name: web3
+    hostname: web3

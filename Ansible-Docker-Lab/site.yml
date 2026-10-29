@@ -1,0 +1,9 @@
+- name: Servidores web
+  hosts: web
+  roles:
+    - web
+
+- name: Balanceador de carga
+  hosts: lb
+  roles:
+    - lb
