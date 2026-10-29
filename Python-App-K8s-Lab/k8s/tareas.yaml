@@ -1,0 +1,75 @@
+# Disco persistente de 100 MiB para guardar tareas.json
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tareas-datos
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tareas
+  labels:
+    app: tareas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tareas
+  template:
+    metadata:
+      labels:
+        app: tareas
+    spec:
+      containers:
+        - name: tareas
+          image: tareas:2.0
+          # La imagen se construye dentro de minikube, no se descarga de ningún registro
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          # Kubernetes solo envía tráfico al pod cuando /salud responde
+          readinessProbe:
+            httpGet:
+              path: /salud
+              port: 8000
+            periodSeconds: 5
+          # Si /salud deja de responder, Kubernetes reinicia el contenedor
+          livenessProbe:
+            httpGet:
+              path: /salud
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: datos
+              mountPath: /data
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+      volumes:
+        - name: datos
+          persistentVolumeClaim:
+            claimName: tareas-datos
+---
+# Punto de acceso estable a la API dentro del clúster, aunque el pod cambie de nombre o IP
+apiVersion: v1
+kind: Service
+metadata:
+  name: tareas
+spec:
+  type: ClusterIP
+  selector:
+    app: tareas
+  ports:
+    - port: 80
+      targetPort: 8000
