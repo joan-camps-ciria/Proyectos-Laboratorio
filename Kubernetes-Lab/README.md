@@ -7,8 +7,8 @@ Una guía de como levantar un clúster de Kubernetes en local usando minikube pa
 ## 📌 Tabla de Contenidos
 1. [Requisitos Previos](#-requisitos-previos)
 2. [Paso 1: Instalación Minikube](#paso-1-instalación-minikube)
-3. [Paso 2: Iniciar Minikube](#paso-2-iniciar-minikube)
-4. [Comandos Esenciales K8s](#-comandos-esenciales)
+3. [Paso 2: Iniciar y detener Minikube](#paso-2-iniciar-y-detener-minikube)
+4. [Comandos Esenciales K8s](#comandos-esenciales-k8s)
 
 ---
 
